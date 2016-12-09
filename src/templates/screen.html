@@ -1,0 +1,46 @@
+<html>
+
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+    <body>
+    <script>
+        function update() {
+            jQuery.get('/screenshot', function(data) {
+                $("#screen").css("background-image", "url(" + data['url'] + ")");
+            })
+        }
+        function tap(x, y) {
+            jQuery.get('/tap', {'x': x, 'y': y}, function(data) {
+            });
+        }
+        function swipe(x1, y1, x2, y2) {
+            jQuery.get('/swipe', {'x1': x1, 'y1': y1, 'x2': x2, 'y2': y2}, function(data) {
+
+            });
+        }
+        $(document).click(function(e) {
+            console.log('click' + e.pageX + ':' + e.pageY);
+            tap(e.pageX, e.pageY)
+        });
+
+        x1 = null;
+        y1 = null;
+
+        $(document).mousedown(function(e) {
+            console.log('mousedown' + e.pageX + ':' + e.pageY);
+            x1 = e.pageX;
+            y1 = e.pageY;
+        })
+        $(document).mouseup(function(e) {
+            console.log('mouseup' + e.pageX + ':' + e.pageY);
+            console.log('swipe' + x1 + ":" + y1 + ":" + e.pageX + ":" + e.pageY);
+            swipe(x1, y1, e.pageX, e.pageY);
+        })
+        setInterval(update, 2000);
+    </script>
+        <div id='screen' style="pointer-events: none;width:600px;height:1024px">
+    </body>
+
+</html>
