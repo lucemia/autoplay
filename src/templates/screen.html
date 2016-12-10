@@ -2,8 +2,6 @@
 
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-
-
     <body>
     <script>
         function update() {
@@ -38,7 +36,7 @@
             console.log('swipe' + x1 + ":" + y1 + ":" + e.pageX + ":" + e.pageY);
             swipe(x1, y1, e.pageX, e.pageY);
         })
-        setInterval(update, 2000);
+        setInterval(update, 5000);
     </script>
         <div id='screen' style="pointer-events: none;width:600px;height:1024px">
     </body>

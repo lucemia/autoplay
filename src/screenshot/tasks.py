@@ -43,7 +43,7 @@ def trust_master():
 
         status, confidence = check_status('screen.png')
         print status, confidence
-        if confidence and confidence > 0.5:
+        if confidence and confidence >= 0.4:
             if status == "maze":
                 tap(300, 500)
             elif status == "reward":
@@ -60,5 +60,11 @@ def trust_master():
                 tap(300, 500)
             elif status == "items":
                 tap(300, 900)
+            elif status == "no_en" and confidence > 0.6:
+                tap(180, 570)
+                time.sleep(10)
+            elif status in ("connect_error", "connect_error1"):
+                tap(300, 550)
+
         else:
             time.sleep(1)
