@@ -84,7 +84,12 @@ def screenshot():
 
 def scan():
     for screenshot in ScreenShot.objects.all():
-        check_status(screenshot)
+        try:
+            check_status(screenshot)
+            compute_hash(screenshot)
+        except:
+            print screenshot, 'failed'
+            # pass
 
 
 def trust_master():
@@ -95,6 +100,9 @@ def trust_master():
 
         status, confidence = match.status, match.confidence
         print status, confidence
+        if status == "friend" and confidence >= 0.3:
+            confidence = 0.4
+
         if confidence and confidence >= 0.4:
             if status == "maze":
                 tap(300, 500)
