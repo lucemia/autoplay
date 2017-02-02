@@ -43,7 +43,7 @@ Fabric==1.10.2
 pyobjc-core
 pyobjc-framework-Quartz
 pillow
-pyautogui
+# pyautogui
 
 pyscreenshot
 opencv-python
