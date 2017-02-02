@@ -47,3 +47,5 @@ pillow
 
 pyscreenshot
 opencv-python
+requests
+imagehash

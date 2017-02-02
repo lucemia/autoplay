@@ -34,4 +34,4 @@ class ImageMatch(object):
 
             return best_result[0], (results[0][1] - results[1][1]) / 50.0
 
-        return None, None
+        return "none", 0
